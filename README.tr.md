@@ -2,18 +2,18 @@
 
 [English](README.md) | **Türkçe**
 
-iPhone'undaki sosyal medyayı **senin bilmediğin** bir şifrenin arkasına kilitle. O şifreyi bilgisayarın bilir.
+Ekran Süresi şifresini kendin koyduğun takdirde o döngüden çıkışın çok kolay oluyor; istediğin an değiştirip kaldırabiliyorsun. Bu küçük program şifreyi senin yerine tutuyor: telefon kilitli kalıyor, şifre bilgisayarında duruyor ve sen o şifreyi bilmiyorsun.
 
-iPhone'un Ekran Süresi özelliği uygulamaları engelleyebilir. Ama şifreyi kendin koyarsan engeli de iki saniyede kaldırırsın. Screen Addict Freezer şifreyi senin aklından alıp bilgisayarına taşır:
+## Ne yapıyor
 
-- Program rastgele 4 haneli bir Ekran Süresi şifresi üretir ve gizlenmiş bir dosyada saklar.
-- Şifreyi **rakam rakam** gösterir, yani 4 haneyi hiçbir zaman aynı anda görmezsin.
-- Şifreyi görmek için bilgisayarın başına geçip kendi seçtiğin bir cümleyi yazman gerekir. Örneğin: *"evet ben iradesizim ve şifreye muhtacım"*.
-- Şifreyi istediğin zaman **yenileyebilirsin**. Böylece aklında kalmış bir şifre varsa işe yaramaz hale gelir.
+- 4 haneli, rastgele bir Ekran Süresi şifresi üretiyor. Rakamların hepsi farklı oluyor, çünkü 1171 gibi şifreler hemen akılda kalıyor.
+- Şifreyi **rakam rakam** gösteriyor. Dört haneyi hiçbir zaman aynı anda görmüyorsun.
+- Şifreyi görmek için önce bilgisayarın başına geçip kendi seçtiğin bir cümleyi yazıyorsun. Mesela: *"evet ben iradesizim ve şifreye muhtacım"*. Böyle bir anda bunu yazmak insanı biraz düşündürüyor.
+- Şifre aklında kaldıysa tek komutla yeniliyorsun. Bildiğin şifre çöpe gidiyor.
 
-Mac, ücretli Apple Developer hesabı, bulut servisi ya da telefona kurulan bir uygulama gerekmez. Sadece iPhone'un kendi Ekran Süresi özelliği ve küçük bir C++ konsol programı.
+Mac, ücretli Apple hesabı ya da telefona uygulama kurmak gerekmiyor. iPhone'un kendi Ekran Süresi ayarı ve bilgisayarda küçük bir C++ programı yeterli.
 
-## Nasıl çalışır
+## Nasıl çalışıyor
 
 ```
  iPhone                                   Bilgisayar
@@ -27,30 +27,30 @@ Mac, ücretli Apple Developer hesabı, bulut servisi ya da telefona kurulan bir 
  Kurtarma: günlük kullanmadığın İKİNCİ bir Apple hesabı
 ```
 
-## Dürüst sınırlar
+## Baştan söyleyeyim
 
-Bu bir güvenlik ürünü değil, **kendine karşı bir zahmet katmanı**.
+Bu bir güvenlik programı değil. Kendine koyduğun, uğraştırıcı ve caydırıcı bir engel.
 
-- Kasa dosyası gizlenmiştir (XOR) ama **şifrelenmemiştir**. Anahtar bu repoda açıkça duruyor. Dosyaya ve koda sahip olan biri şifreyi çözebilir; kötü bir gününde sen de dahil.
-- Kurtarma Apple hesabı Ekran Süresi şifresini sıfırlayabilir. Bu hesabın şifresini zor ulaşılan bir yerde tut: kapalı bir zarfta ya da bir aile üyesinde.
-- Gerçekten kırmak istersen kırarsın. Amaç, zayıf bir anında yolun yeterince uzun olması: bilgisayar → program → cümle → rakamlar. Çoğu zaman bu kadarı vazgeçirir.
+- Şifrenin durduğu dosya sadece gizlenmiş (XOR), gerçekten şifrelenmiş değil. Anahtar bu repoda açıkça duruyor. Dosyayı ve kodu alan biri şifreyi çözebilir.
+- Kurtarma için kullandığın Apple hesabı Ekran Süresi şifresini sıfırlayabilir.
+- Gerçekten kırmak istersen kırarsın. Amaç, zayıf bir anında önünde yeterince uzun bir yol olması: bilgisayarı aç, programı çalıştır, cümleyi yaz, rakamları tek tek al. Çoğu zaman bu kadarı vazgeçirmeye yetiyor.
 
-## Gereksinimler
+## Neye ihtiyacın var
 
 - Ekran Süresi olan bir iPhone (iOS 12 ve sonrası)
-- Sadece Ekran Süresi kurtarma hesabı olarak kullanılacak ikinci bir Apple hesabı
-- Windows bilgisayar (Linux ve macOS'ta da kaynak koddan derleyerek çalışır)
+- İkinci bir Apple hesabı. Sadece Ekran Süresi şifresini kurtarmak için.
+- Windows bilgisayar. Linux ve macOS'ta da kaynak koddan derleyip kullanabilirsin.
 
 ## Kurulum
 
-### Seçenek A: MinGW ile derleme (Windows)
+### Windows'ta MinGW ile
 
 1. Bir C++ derleyicisi kur, örneğin [MSYS2](https://www.msys2.org/) ya da [WinLibs](https://winlibs.com/) MinGW-w64.
-2. Bu repoyu indir (yeşil **Code** düğmesi → *Download ZIP*) ve zip'i aç.
+2. Repoyu indir (yeşil **Code** düğmesi → *Download ZIP*) ve zip'i aç.
 3. `build.bat` dosyasına çift tıkla ya da klasörde terminalden çalıştır.
-4. `screen_addict_freezer.exe` dosyasını kasanı tutmak istediğin klasöre kopyala. Repo klasörünün içine değil.
+4. Çıkan `screen_addict_freezer.exe` dosyasını şifreni tutacağın klasöre kopyala. Repo klasörünün içine koyma.
 
-### Seçenek B: CMake (her platform)
+### CMake ile (her platform)
 
 ```bash
 cmake -B build
@@ -59,51 +59,51 @@ cmake --build build --config Release
 
 ## Kullanım
 
-Adım adım rehber için **[docs/iphone-kurulum.md](docs/iphone-kurulum.md)** dosyasına bak. Kısaca:
+Ayrıntılı, adım adım anlatım [docs/iphone-kurulum.md](docs/iphone-kurulum.md) dosyasında. Kısaca:
 
-1. iPhone'da Ekran Süresi'ni **kendi seçtiğin geçici bir şifreyle** kilitle, kurtarma hesabı olarak ikinci Apple hesabını gir.
-2. Bir mod seç ve tüm ayarları geçici şifreyle yap:
-   - **Sert mod (Kapalı Kalma Süresi):** belirlediğin saatler dışında telefon neredeyse kullanılamaz, web siteleri dahil.
-   - **Dengeli mod (Uygulama Sınırları):** sadece sosyal medyaya günlük süre konur; Safari ve diğer her şey serbest kalır.
+1. iPhone'da Ekran Süresi'ni **kendi seçtiğin geçici bir şifreyle** kilitle. Kurtarma hesabı olarak ikinci Apple hesabını gir.
+2. Ayarları bu geçici şifreyle yap. Önce sana uyan modu seç:
+   - **Sert mod (Kapalı Kalma Süresi):** Belirlediğin saatler dışında telefonun neredeyse tüm internet tabanlı işlevi sıfırlanıyor, web sitelerine erişimin de kapanıyor.
+   - **Dengeli mod (Uygulama Sınırları), önerilen:** Sadece senin seçeceğin sosyal medyalara günlük bir süre konuyor. Safari ve geri kalan her şey açık kalıyor.
+3. Programı aç → **2) İlk kurulum** → onay cümleni seç.
+4. iPhone'da *Ekran Süresi Şifresini Değiştir*'e gir. Önce geçici şifreni yaz, sonra programın rakam rakam gösterdiği yeni şifreyi.
+5. `vault.dat` dosyasını bir USB belleğe yedekle.
 
-   Ardından içerik ve web kısıtlamalarını yap.
-3. Programı çalıştır → **2) İlk kurulum** → onay cümleni seç.
-4. iPhone'da *Ekran Süresi Şifresini Değiştir*: önce geçici şifreni, sonra programın rakam rakam gösterdiği yeni şifreyi gir.
-5. `vault.dat` dosyasını yedekle, örneğin bir USB belleğe.
+Bundan sonra telefondaki şifreyi sen bilmiyorsun.
 
 | Menü | Ne yapar |
 |---|---|
-| 1) Kilidi aç | Cümleni yazarsın → şifre rakam rakam gösterilir. Şifre değişmez. |
+| 1) Kilidi aç | Cümleni yazarsın, şifre rakam rakam gösterilir. Şifre değişmez. |
 | 2) İlk kurulum | Sadece henüz kasa yokken çalışır. |
-| 3) Şifreyi yenile | Cümleni yazarsın → eski ve yeni şifre gösterilir → telefona bilmediğin yeni bir şifre girilir. |
-| 4) Onay cümlesini değiştir | Mevcut cümleyi yazmayı gerektirir. |
+| 3) Şifreyi yenile | Cümleni yazarsın, eski ve yeni şifre gösterilir. Telefona bilmediğin yeni bir şifre girersin. |
+| 4) Onay cümlesini değiştir | Önce şu anki cümleyi yazman gerekir. |
 | 5) Dil | English / Türkçe |
 
 ## Dosyalar
 
-| Dosya | İçerik |
+| Dosya | İçinde ne var |
 |---|---|
-| `vault.dat` | Geçerli şifre, cümlen ve dil seçimin. **Yedekle. Asla repoya ekleme.** |
-| `vault_pending.dat` | Sadece şifre değişikliği sürerken bulunur. Program bir sonraki açılışta durumu çözer. |
-| `kasa.dat` | İlk sürümün kasası. Otomatik olarak `vault.dat` dosyasına taşınır. |
+| `vault.dat` | Şu anki şifre, cümlen ve dil seçimin. **Yedekle, repoya asla ekleme.** |
+| `vault_pending.dat` | Sadece şifre değişirken oluşur. Bir şey yarıda kalırsa program bir sonraki açılışta toparlar. |
+| `kasa.dat` | İlk sürümün dosyası. Program bunu kendiliğinden `vault.dat`'a taşır. |
 
-Program bu dosyaları **çalıştırıldığı klasörde** oluşturur.
+Program bu dosyaları **hangi klasörden çalıştırdıysan** oraya yazar.
 
-## Bir şeyler ters giderse
+## Bir şey ters giderse
 
-- **vault.dat kayboldu ya da bozuldu:** yedeği geri yükle. Yedek yoksa: iPhone → Ayarlar → Ekran Süresi → Ekran Süresi Şifresini Değiştir → *Şifrenizi mi unuttunuz?* → kurtarma Apple hesabıyla giriş yap → yeni şifre belirle → programda *İlk kurulum*'u tekrar yap.
-- **Kurtarma hesabının şifresini unuttun:** başka bir cihazdan [iforgot.apple.com](https://iforgot.apple.com) adresinde sıfırla.
-- **Acil durum:** Kapalı Kalma Süresi telefon aramalarını asla engellemez, acil aramalar her zaman çalışır.
+- **`vault.dat` kayboldu ya da bozuldu:** Yedeği geri koy. Yedek yoksa: iPhone → Ayarlar → Ekran Süresi → Ekran Süresi Şifresini Değiştir → *Şifrenizi mi unuttunuz?* → kurtarma Apple hesabıyla giriş yap → yeni şifre belirle → programda *İlk kurulum*'u tekrar yap.
+- **Kurtarma hesabının şifresini unuttun:** Başka bir cihazdan [iforgot.apple.com](https://iforgot.apple.com) adresinde sıfırla.
+- **Acil durum:** Kapalı Kalma Süresi telefon aramalarını hiçbir zaman engellemez. Acil arama her zaman çalışır.
 
-## Proje yapısı
+## Kodun içi
 
 ```
 src/
   main.cpp                  giriş noktası
-  app.h/.cpp                menü ve tüm akışlar
-  vault.h/.cpp              sağlama toplamlı, gizlenmiş dosya kaydı
-  password_generator.h/.cpp rastgele, kolay tahmin edilemeyen 4 haneli şifre
-  phrase.h/.cpp             cümle sadeleştirme (büyük/küçük harf, Türkçe harf, boşluk)
+  app.h/.cpp                menü ve bütün akışlar
+  vault.h/.cpp              şifreyi saklayan dosya (gizleme + sağlama toplamı)
+  password_generator.h/.cpp rakamları farklı, tahmini zor 4 haneli şifre
+  phrase.h/.cpp             cümle karşılaştırma (büyük/küçük harf, Türkçe harf, boşluk)
   console.h/.cpp            konsol yardımcıları, rakam rakam gösterim
   i18n.h/.cpp               İngilizce / Türkçe metinler
 docs/                       iPhone kurulum rehberleri (EN / TR)
@@ -111,4 +111,4 @@ docs/                       iPhone kurulum rehberleri (EN / TR)
 
 ## Lisans
 
-[MIT](LICENSE)
+[MIT](LICENSE). Kodu istediğin gibi kullanabilir, değiştirebilir, paylaşabilirsin.

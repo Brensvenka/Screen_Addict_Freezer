@@ -1,0 +1,13 @@
+# NEVER commit the vault: it contains your real Screen Time passcode.
+*.dat
+
+# Build output
+build/
+*.exe
+*.o
+*.obj
+screen_addict_freezer
+
+# Editors
+.vscode/
+.idea/

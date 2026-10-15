@@ -19,7 +19,7 @@ Mac, ücretli Apple Developer hesabı, bulut servisi ya da telefona kurulan bir 
  iPhone                                   Bilgisayar
 ┌───────────────────────────┐      ┌──────────────────────────────┐
 │ Ekran Süresi              │      │ screen_addict_freezer.exe     │
-│  - Kapalı Kalma (21-20)   │      │                              │
+│  - Kapalı Kalma / Sınır   │      │                              │
 │  - uygulama yükle/sil yok │◄─────│ vault.dat  ──► şifre 4-8-1-6 │
 │  - web kısıtlamaları      │ şifre│ cümleni yazınca, rakam rakam  │
 │  - şifre: ????            │      │                              │
@@ -62,7 +62,11 @@ cmake --build build --config Release
 Adım adım rehber için **[docs/iphone-kurulum.md](docs/iphone-kurulum.md)** dosyasına bak. Kısaca:
 
 1. iPhone'da Ekran Süresi'ni **kendi seçtiğin geçici bir şifreyle** kilitle, kurtarma hesabı olarak ikinci Apple hesabını gir.
-2. Tüm ayarları geçici şifreyle yap: Kapalı Kalma Süresi, içerik kısıtlamaları, web kısıtlamaları.
+2. Bir mod seç ve tüm ayarları geçici şifreyle yap:
+   - **Sert mod (Kapalı Kalma Süresi):** belirlediğin saatler dışında telefon neredeyse kullanılamaz, web siteleri dahil.
+   - **Dengeli mod (Uygulama Sınırları):** sadece sosyal medyaya günlük süre konur; Safari ve diğer her şey serbest kalır.
+
+   Ardından içerik ve web kısıtlamalarını yap.
 3. Programı çalıştır → **2) İlk kurulum** → onay cümleni seç.
 4. iPhone'da *Ekran Süresi Şifresini Değiştir*: önce geçici şifreni, sonra programın rakam rakam gösterdiği yeni şifreyi gir.
 5. `vault.dat` dosyasını yedekle, örneğin bir USB belleğe.

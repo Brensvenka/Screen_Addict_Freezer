@@ -19,7 +19,7 @@ No Mac, no paid Apple Developer account, no cloud service, no app on the phone. 
  iPhone                                   PC
 ┌───────────────────────────┐      ┌──────────────────────────────┐
 │ Screen Time               │      │ screen_addict_freezer.exe     │
-│  - Downtime (e.g. 21-20)  │      │                              │
+│  - Downtime / App Limits  │      │                              │
 │  - app install/delete off │◄─────│ vault.dat  ──► code 4-8-1-6  │
 │  - web limits             │ code │ shown digit by digit, only    │
 │  - passcode: ????         │      │ after your sentence           │
@@ -62,7 +62,11 @@ cmake --build build --config Release
 Follow **[docs/iphone-setup.md](docs/iphone-setup.md)** for the full, step-by-step guide. In short:
 
 1. On the iPhone, lock Screen Time with a **temporary passcode you choose**, and set the second Apple Account as recovery.
-2. Do all the settings with the temporary passcode: Downtime, content restrictions, web limits.
+2. Choose a mode and do all the settings with the temporary passcode:
+   - **Hard mode (Downtime):** the phone is almost unusable outside your time window, websites included.
+   - **Balanced mode (App Limits):** only social media gets a daily time budget; Safari and everything else stay usable.
+
+   Then set content restrictions and web limits.
 3. Run the program → **2) First setup** → choose your confirmation sentence.
 4. On the iPhone, *Change Screen Time Passcode*: type your temporary code, then the new code the program shows you digit by digit.
 5. Back up `vault.dat` (e.g. on a USB stick).

@@ -13,11 +13,19 @@ std::string PasswordGenerator::generate(const std::string& avoid) {
 }
 
 bool PasswordGenerator::isWeak(const std::string& code) {
-    bool same = true, ascending = true, descending = true;
+    // 1) Every digit must be different: no 1171, no 3393, no 5505.
+    bool seen[10] = {};
+    for (char c : code) {
+        const int d = c - '0';
+        if (seen[d]) return true;
+        seen[d] = true;
+    }
+
+    // 2) No straight runs like 1234 or 9876.
+    bool ascending = true, descending = true;
     for (std::size_t i = 1; i < code.size(); ++i) {
-        if (code[i] != code[0]) same = false;
         if (code[i] != code[i - 1] + 1) ascending = false;
         if (code[i] != code[i - 1] - 1) descending = false;
     }
-    return same || ascending || descending;
+    return ascending || descending;
 }

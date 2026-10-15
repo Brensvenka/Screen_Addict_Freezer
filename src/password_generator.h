@@ -10,7 +10,9 @@ public:
     // Returns a random 4-digit code that is not weak and differs from `avoid`.
     std::string generate(const std::string& avoid = "");
 
-    // Weak = all digits equal (1111), ascending (1234) or descending (4321).
+    // Weak = any digit repeats (1171, 3393, 5505) or the digits run
+    // ascending (1234) / descending (4321). Repeated digits form a rhythm
+    // that sticks in memory, which defeats showing the code digit by digit.
     static bool isWeak(const std::string& code);
 
 private:

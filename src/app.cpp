@@ -3,19 +3,14 @@
 #include <iostream>
 
 #include "console.h"
+#include "core.h"
 #include "i18n.h"
 #include "phrase.h"
 
 using i18n::t;
 
-namespace {
-const char* kVaultFile = "vault.dat";
-const char* kPendingFile = "vault_pending.dat";
-const char* kLegacyFile = "kasa.dat";  // file of the original single-file version
-const char* kLegacyPhrase = "evet ben iradesizim ve sifreye muhtacim";
-}  // namespace
 
-App::App() : vault_(kVaultFile), pending_(kPendingFile) {}
+App::App() : vault_(core::kVaultFile), pending_(core::kPendingFile) {}
 
 // ---------------------------------------------------------------------------
 int App::run() {
@@ -62,16 +57,10 @@ int App::run() {
 // Startup
 // ---------------------------------------------------------------------------
 void App::migrateLegacy() {
-    if (vault_.exists()) return;
-    std::string code;
-    if (!Vault::loadLegacy(kLegacyFile, code)) return;
-
-    VaultData migrated{code, kLegacyPhrase, i18n::Lang::Turkish};
-    if (vault_.save(migrated)) {
-        std::cout << "kasa.dat -> vault.dat\n"
-                  << "Eski kasa tasindi. vault.dat'i yedekledikten sonra kasa.dat'i silebilirsin.\n"
-                  << "Onay cumlesi: \"" << kLegacyPhrase << "\" (4 ile degistirebilirsin)\n";
-    }
+    if (!core::migrateLegacy(vault_)) return;
+    std::cout << "kasa.dat -> vault.dat\n"
+              << "Eski kasa tasindi. vault.dat'i yedekledikten sonra kasa.dat'i silebilirsin.\n"
+              << "Onay cumlesi: \"" << core::kLegacyPhrase << "\" (4 ile degistirebilirsin)\n";
 }
 
 void App::chooseLanguage() {

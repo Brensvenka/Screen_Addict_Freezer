@@ -1,0 +1,3 @@
+// Windows resources for the windowed version: embeds app.manifest.
+// 1 = resource id, 24 = RT_MANIFEST
+1 24 "app.manifest"

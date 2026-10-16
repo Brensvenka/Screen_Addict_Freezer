@@ -47,8 +47,12 @@ Bu bir güvenlik programı değil. Kendine koyduğun, uğraştırıcı ve caydı
 
 1. Bir C++ derleyicisi kur, örneğin [MSYS2](https://www.msys2.org/) ya da [WinLibs](https://winlibs.com/) MinGW-w64.
 2. Repoyu indir (yeşil **Code** düğmesi → *Download ZIP*) ve zip'i aç.
-3. `build.bat` dosyasına çift tıkla ya da klasörde terminalden çalıştır.
-4. Çıkan `screen_addict_freezer.exe` dosyasını şifreni tutacağın klasöre kopyala. Repo klasörünün içine koyma.
+3. `build.bat` dosyasına çift tıkla ya da klasörde terminalden çalıştır. İki program çıkar:
+   - `screen_addict_freezer.exe`: küçük bir pencereyle çalışan sürüm
+   - `screen_addict_freezer_cli.exe`: aynı şeyi komut satırında yapan sürüm
+
+   İkisi de aynı `vault.dat` dosyasını kullanır; hangisini istersen onu aç.
+4. Programı şifreni tutacağın klasöre kopyala. Repo klasörünün içine koyma.
 
 ### CMake ile (her platform)
 
@@ -65,19 +69,19 @@ Ayrıntılı, adım adım anlatım [docs/iphone-kurulum.md](docs/iphone-kurulum.
 2. Ayarları bu geçici şifreyle yap. Önce sana uyan modu seç:
    - **Sert mod (Kapalı Kalma Süresi):** Belirlediğin saatler dışında telefonun neredeyse tüm internet tabanlı işlevi sıfırlanıyor, web sitelerine erişimin de kapanıyor.
    - **Dengeli mod (Uygulama Sınırları), önerilen:** Sadece senin seçeceğin sosyal medyalara günlük bir süre konuyor. Safari ve geri kalan her şey açık kalıyor.
-3. Programı aç → **2) İlk kurulum** → onay cümleni seç.
+3. Programı aç → **İlk kurulum** → onay cümleni seç.
 4. iPhone'da *Ekran Süresi Şifresini Değiştir*'e gir. Önce geçici şifreni yaz, sonra programın rakam rakam gösterdiği yeni şifreyi.
 5. `vault.dat` dosyasını bir USB belleğe yedekle.
 
 Bundan sonra telefondaki şifreyi sen bilmiyorsun.
 
-| Menü | Ne yapar |
+| Düğme | Ne yapar |
 |---|---|
-| 1) Kilidi aç | Cümleni yazarsın, şifre rakam rakam gösterilir. Şifre değişmez. |
-| 2) İlk kurulum | Sadece henüz kasa yokken çalışır. |
-| 3) Şifreyi yenile | Cümleni yazarsın, eski ve yeni şifre gösterilir. Telefona bilmediğin yeni bir şifre girersin. |
-| 4) Onay cümlesini değiştir | Önce şu anki cümleyi yazman gerekir. |
-| 5) Dil | English / Türkçe |
+| Kilidi aç | Cümleni yazarsın, şifre rakam rakam gösterilir. Şifre değişmez. |
+| İlk kurulum | Sadece henüz kasa yokken çalışır. |
+| Şifreyi yenile | Cümleni yazarsın, eski ve yeni şifre gösterilir. Telefona bilmediğin yeni bir şifre girersin. |
+| Onay cümlesini değiştir | Önce şu anki cümleyi yazman gerekir. |
+| Türkçe / English | Dili değiştirir. |
 
 ## Dosyalar
 
@@ -99,13 +103,19 @@ Program bu dosyaları **hangi klasörden çalıştırdıysan** oraya yazar.
 
 ```
 src/
-  main.cpp                  giriş noktası
-  app.h/.cpp                menü ve bütün akışlar
+  core.h/.cpp               iki sürümün ortak parçası: dosya adları, eski kasanın taşınması
   vault.h/.cpp              şifreyi saklayan dosya (gizleme + sağlama toplamı)
   password_generator.h/.cpp rakamları farklı, tahmini zor 4 haneli şifre
   phrase.h/.cpp             cümle karşılaştırma (büyük/küçük harf, Türkçe harf, boşluk)
-  console.h/.cpp            konsol yardımcıları, rakam rakam gösterim
   i18n.h/.cpp               İngilizce / Türkçe metinler
+  gui/
+    gui_main.cpp            pencereli sürümün giriş noktası
+    gui_app.h/.cpp          pencere, sayfalar ve bütün akışlar (Win32 API)
+  main.cpp                  konsol sürümünün giriş noktası
+  app.h/.cpp                konsol menüsü ve akışlar
+  console.h/.cpp            konsol yardımcıları, rakam rakam gösterim
+res/
+  app.manifest, app.rc      pencereli sürüme modern Windows görünümü
 docs/                       iPhone kurulum rehberleri (EN / TR)
 ```
 

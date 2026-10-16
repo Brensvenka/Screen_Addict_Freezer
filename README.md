@@ -47,8 +47,12 @@ This isn't a security tool. It's an annoying, discouraging obstacle you put in y
 
 1. Install a C++ compiler, e.g. [MSYS2](https://www.msys2.org/) or [WinLibs](https://winlibs.com/) MinGW-w64.
 2. Download this repo (green **Code** button → *Download ZIP*) and unzip it.
-3. Double-click `build.bat`, or run it from a terminal in the folder.
-4. Copy `screen_addict_freezer.exe` to the folder where you want to keep your passcode. Not inside the repo folder.
+3. Double-click `build.bat`, or run it from a terminal in the folder. You get two programs:
+   - `screen_addict_freezer.exe`: the version with a small window
+   - `screen_addict_freezer_cli.exe`: the same thing in the command line
+
+   Both use the same `vault.dat`; open whichever you like.
+4. Copy the program to the folder where you want to keep your passcode. Not inside the repo folder.
 
 ### CMake (any platform)
 
@@ -65,19 +69,19 @@ The full step-by-step guide is in [docs/iphone-setup.md](docs/iphone-setup.md). 
 2. Do all the settings with that temporary code. First pick the mode that fits your life:
    - **Hard mode (Downtime):** outside your chosen hours almost everything internet-based on the phone shuts down, and your access to websites goes with it.
    - **Balanced mode (App Limits), recommended:** only the social media apps you pick get a daily time budget. Safari and everything else keep working.
-3. Run the program → **2) First setup** → choose your confirmation sentence.
+3. Open the program → **First setup** → choose your confirmation sentence.
 4. On the iPhone, go to *Change Screen Time Passcode*. Type your temporary code, then the new code the program shows you digit by digit.
 5. Back up `vault.dat` to a USB stick.
 
 From now on, you don't know the passcode on your phone.
 
-| Menu | What it does |
+| Button | What it does |
 |---|---|
-| 1) Unlock | Type your sentence and the code is shown digit by digit. The code stays the same. |
-| 2) First setup | Only works when there's no vault yet. |
-| 3) Rotate code | Type your sentence, see the old and new code, and give the phone a new code you don't know. |
-| 4) Change confirmation phrase | You type the current sentence first. |
-| 5) Language | English / Türkçe |
+| Unlock | Type your sentence and the code is shown digit by digit. The code stays the same. |
+| First setup | Only works when there's no vault yet. |
+| Rotate code | Type your sentence, see the old and new code, and give the phone a new code you don't know. |
+| Change confirmation phrase | You type the current sentence first. |
+| Türkçe / English | Switches the language. |
 
 ## Files
 
@@ -99,13 +103,19 @@ The program writes these files to **whatever folder you run it from**.
 
 ```
 src/
-  main.cpp                  entry point
-  app.h/.cpp                menu and all the flows
+  core.h/.cpp               shared by both versions: file names, migrating the old vault
   vault.h/.cpp              the file that stores the code (obfuscation + checksum)
   password_generator.h/.cpp 4-digit codes with all-different digits
   phrase.h/.cpp             sentence matching (case, Turkish letters, spaces)
-  console.h/.cpp            console helpers, digit-by-digit display
   i18n.h/.cpp               English / Turkish texts
+  gui/
+    gui_main.cpp            entry point of the windowed version
+    gui_app.h/.cpp          window, pages and all the flows (Win32 API)
+  main.cpp                  entry point of the console version
+  app.h/.cpp                console menu and flows
+  console.h/.cpp            console helpers, digit-by-digit display
+res/
+  app.manifest, app.rc      modern Windows look for the windowed version
 docs/                       iPhone setup guides (EN / TR)
 ```
 
